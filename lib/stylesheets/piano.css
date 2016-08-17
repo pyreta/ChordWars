@@ -1,0 +1,9 @@
+.piano-base{
+  /*background-color: #4285f4;*/
+  height: 298px;
+  width: 1460px;
+  padding: 50px;
+  padding-top: 129px;
+  border-radius: 50px;
+  border: 5px solid black;
+}

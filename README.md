@@ -27,10 +27,10 @@ ChordWars is a game that trains the user to memorize chords.  A chord is display
 
 **Objective:** Piano layout with keys changing color when pressed
 
-- [ ] Create new project
-- [ ] Flesh out interactive piano view using CSS and HTML
+- [x] Create new project
+- [x] Flesh out interactive piano view using CSS and HTML
 - [ ] Create instructions modal
-- [ ] Create note constants
+- [x] Create note constants
 - [ ] Create random chord window
 - [ ] Create Timer window
 
@@ -40,7 +40,7 @@ ChordWars is a game that trains the user to memorize chords.  A chord is display
 Random chord appears in chord window, and timer counts down on reload
 
 - [ ] Create key press constants
-- [ ] Create piano sample library
+- [x] Create piano sample library
 - [ ] Create all chord composition constants
 - [ ] Create chord reading function  
 - [ ] Link function to window if chord is correct  
