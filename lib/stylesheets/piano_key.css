@@ -2,7 +2,7 @@
   /*float: left;*/
   display: inline-block;
   /*position: relative;*/
-  height: 368px;
+  height: 408px;
   width: 70px;
   background-color: white;
   border-radius: 10px;
@@ -15,39 +15,17 @@
 }
 
 .black{
-  /*display: inline-block;*/
   position: absolute;
-  /*left:190px;*/
-  top: 0;
+  top: -6px;
 
-  height: 200px;
+  height: 260px;
   width: 50px;
   background-color: black;
   color: white;
   border-radius: 10px;
-  border: 3px solid red;
   border-left: 0;
-  /*z-index: 5;*/
 }
 
 .key-container{
   width: 100px;
-}
-
-.blackbox{
-  background-color: green;
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  left:10px;
-  top: 0;
-}
-
-.blackbox2{
-  background-color: red;
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  left:190px;
-  top: 0;
 }

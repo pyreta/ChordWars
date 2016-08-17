@@ -40,7 +40,7 @@ const Piano = React.createClass({
           className = "group key-container"
           color = "black"
           z={i+5}
-          left={i*100}
+          left={NoteConstants[note].left}
           noteFileName={ note }>
         </PianoKey>);
     });
@@ -53,8 +53,6 @@ const Piano = React.createClass({
         <div className="keys">
           { this.whiteKeys() }
           { this.blackKeys() }
-          <div className="blackbox">BOX</div>
-          <div className="blackbox2">BOX2</div>
         </div>
       </div>
     );

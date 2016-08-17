@@ -12,9 +12,19 @@ const PianoKey = React.createClass({
     el.play();
   },
 
+  margin(){
+    let octave = parseInt(this.props.noteFileName.slice(-1,this.props.noteFileName.length));
+    let margin = 0;
+    if (this.props.color==="black"){
+      margin = 510;
+    }
+    return margin * (octave-1);
+  },
+
   render(){
+
     return (
-      <div onClick={this.playKey} className = {this.props.color} style={{"left":this.props.left, "z-index":this.props.z}}>
+      <div onClick={this.playKey} className = {this.props.color} style={{"left":this.props.left, "zIndex":this.props.z, "marginLeft":this.margin()}}>
         {NoteConstants[this.props.noteFileName].note}
         {
           <audio id={this.props.noteFileName}>
