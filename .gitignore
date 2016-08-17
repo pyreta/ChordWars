@@ -1,0 +1,13 @@
+node_modules
+.DS_Store
+/tmp
+sprockets
+bundle
+.byebug_history
+
+*node_modules
+*.DS_Store
+*tmp
+*sprockets
+*bundle
+development.log
