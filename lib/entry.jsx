@@ -12,6 +12,8 @@ const App = React.createClass({
 
     return (
         <div>
+          <ChordWindow />
+          <Timer />
           <Piano />
         </div>
     );

@@ -24,7 +24,7 @@ const PianoKey = React.createClass({
   render(){
 
     return (
-      <div onClick={this.playKey} className = {this.props.color} style={{"left":this.props.left, "zIndex":this.props.z, "marginLeft":this.margin()}}>
+      <div onClick={this.playKey} className = {this.props.color + " key"} style={{"left":this.props.left, "zIndex":this.props.z, "marginLeft":this.margin()}}>
         {NoteConstants[this.props.noteFileName].note}
         {
           <audio id={this.props.noteFileName}>

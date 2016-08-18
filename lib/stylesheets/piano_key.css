@@ -2,30 +2,53 @@
   /*float: left;*/
   display: inline-block;
   /*position: relative;*/
+  color: #4285f4;
   height: 408px;
   width: 70px;
-  background-color: white;
+  background-color: rgb(229, 192, 123);
   border-radius: 10px;
-  border: 3px solid black;
+  border: 3px solid rgb(33, 37, 43);
   border-left: 0;
+}
+
+.white:hover{
+  background-color: #98c379;
+}
+
+.black:hover{
+  background-color: rgb(42, 65, 101);
 }
 
 .keys{
   position: relative;
+  border-left: 3px solid #1d1919;
+  border-radius: 14px;
 }
 
 .black{
   position: absolute;
   top: -6px;
-
+  border: 2px solid rgb(224, 108, 117);
   height: 260px;
   width: 50px;
-  background-color: black;
-  color: white;
+  background-color: rgb(33, 37, 43);
+  color: black;
   border-radius: 10px;
-  border-left: 0;
 }
+
+/*
+rgb(40, 44, 52);
+rgb(33, 37, 43);
+
+rgb(224, 108, 117)
+rgb(171, 178, 191)
+rgb(97, 175, 239)
+rgb(229, 192, 123)
+
+#56b6c2;
+#98c379;
+*/
+
 
 .key-container{
   width: 100px;
-}

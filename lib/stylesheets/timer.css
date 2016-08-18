@@ -1,0 +1,33 @@
+.timer{
+  width: 1503px;
+  height: 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 6px solid rgb(33, 37, 43);
+  background-color: rgb(33, 37, 43);
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+.time-passed{
+  width: 1524px;
+  height: 25px;
+  background-color: #56b6c2;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+
+}
+
+
+/*
+rgb(40, 44, 52);
+rgb(33, 37, 43);
+
+rgb(224, 108, 117)
+rgb(171, 178, 191)
+rgb(97, 175, 239)
+rgb(229, 192, 123)
+
+#56b6c2;
+#98c379;
+*/

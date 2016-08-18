@@ -1,0 +1,37 @@
+.chord-window{
+  width: 422px;
+  height: 177px;
+  margin: 20px;
+  color: white;
+  padding-top: 20px;
+  background-color: rgb(33, 37, 43);
+  border: 24px solid rgb(33, 37, 43);
+  border-radius: 73px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 122px;
+}
+
+.note-name{
+  color: rgb(224, 108, 117);
+}
+}
+
+.note-voice{
+  color: rgb(97, 175, 239);
+}
+
+
+
+/*
+rgb(40, 44, 52);
+rgb(33, 37, 43);
+
+rgb(224, 108, 117)
+rgb(171, 178, 191)
+rgb(97, 175, 239)
+rgb(229, 192, 123)
+
+#56b6c2;
+#98c379;
+*/
