@@ -1,25 +1,21 @@
-.chord-window{
+.score-board{
   width: 422px;
-  height: 177px;
+  height: 197px;
   margin: 20px;
-  color: white;
-  padding-top: 20px;
   background-color: rgb(33, 37, 43);
   border: 24px solid rgb(33, 37, 43);
   border-radius: 73px;
   overflow: hidden;
   text-align: center;
-  font-size: 122px;
   float: left;
+  color: white;
+  font-size: 33px;
 }
 
-.note-name{
-  color: rgb(224, 108, 117);
-}
-}
-
-.note-voice{
+.score{
+  font-size: 133px;
   color: rgb(97, 175, 239);
+
 }
 
 

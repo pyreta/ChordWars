@@ -2,7 +2,11 @@ const React = require('react');
 
 const ScoreBoard = React.createClass({
   render(){
-    return (<div>ScoreBoard</div>);
+    return (
+      <div className="score-board">
+        <div className="score">300</div>
+        Points
+      </div>);
   }
 
 });

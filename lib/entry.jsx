@@ -12,7 +12,10 @@ const App = React.createClass({
 
     return (
         <div>
-          <ChordWindow />
+          <div className="group">
+            <ChordWindow />
+            <ScoreBoard />
+          </div>
           <Timer />
           <Piano />
         </div>
