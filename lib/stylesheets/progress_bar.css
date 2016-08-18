@@ -1,4 +1,4 @@
-.timer{
+.progress{
   width: 1503px;
   height: 25px;
   margin-top: 20px;
@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 
-.time-passed{
+.progress-bar{
   width: 1524px;
   height: 25px;
   background-color: #56b6c2;
@@ -17,17 +17,3 @@
   border-bottom-left-radius: 10px;
 
 }
-
-
-/*
-rgb(40, 44, 52);
-rgb(33, 37, 43);
-
-rgb(224, 108, 117)
-rgb(171, 178, 191)
-rgb(97, 175, 239)
-rgb(229, 192, 123)
-
-#56b6c2;
-#98c379;
-*/
