@@ -1,6 +1,7 @@
 .progress{
   width: 1503px;
   height: 25px;
+  margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;
   border: 6px solid rgb(33, 37, 43);

@@ -5,6 +5,7 @@ const ChordWindow =  require("./components/chord_window");
 const ProgressBar =  require("./components/progress_bar");
 const ScoreBoard =  require("./components/score_board");
 const Controls =  require("./components/controls");
+const chordFunctions = require("./util/chord_functions");
 
 const App = React.createClass({
 
@@ -19,7 +20,14 @@ const App = React.createClass({
   },
 
   getInitialState(){
-    return { healthPercent: "0%", timerPercent: "0%", timer: 0, health: 0, gameOver: false};
+    return {
+      healthPercent: "0%",
+      timerPercent: "0%",
+      timer: 0,
+      health: 0,
+      gameOver: false,
+      chord: chordFunctions.generate()
+    };
   },
 
   componentDidMount(){
@@ -48,6 +56,10 @@ const App = React.createClass({
     this.incrementHealth(2);
   },
 
+  nextChord(){
+    this.setState({ chord: chordFunctions.generate() });
+  },
+
   startTimer(){
     let now = new Date();
     let nowSeconds = now.getTime();
@@ -56,9 +68,12 @@ const App = React.createClass({
       this.setState({timer: newTime, timerPercent: this.timeState()});
       if (newTime >= this.timeLength){
         clearInterval(this.timeIntervalId);
-        this.healthTest();
+        this.incrementHealth(this.state.chord.notes.length-2);
         if (!this.state.gameOver){
           this.startTimer();
+          this.nextChord();
+          console.log(chordFunctions.randomNote());
+          console.log(chordFunctions.randomVoice());
         }
       }
     }, 1);
@@ -70,15 +85,16 @@ const App = React.createClass({
   },
 
   gameOver(){
-    this.setState({ gameOver: true });
+    clearInterval(this.timeIntervalId);
+    this.setState({ gameOver: true, chord: {note: ":", voice: "", other: "(", notes: []} });
   },
 
   render() {
 
     return (
         <div>
-          <div className="group">
-            <ChordWindow />
+          <div className="group windows">
+            <ChordWindow chord={ this.state.chord }/>
             <ScoreBoard />
           </div>
 
