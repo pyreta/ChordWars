@@ -14,6 +14,7 @@ const Piano = React.createClass({
       return (
         <PianoKey
           key={i}
+          id={ note }
           instrument="piano"
           className = "group key-container"
           color = "white"

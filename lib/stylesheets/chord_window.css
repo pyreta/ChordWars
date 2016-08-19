@@ -2,7 +2,8 @@
   width: 422px;
   height: 177px;
   margin: 20px;
-  color: white;
+  /*color: white;*/
+  color: #98c379;
   padding-top: 20px;
   background-color: rgb(33, 37, 43);
   border: 24px solid rgb(33, 37, 43);
@@ -11,6 +12,11 @@
   text-align: center;
   font-size: 122px;
   float: left;
+}
+
+.chord-notes{
+  font-size: 23px;
+  color: white;
 }
 
 .note-name{

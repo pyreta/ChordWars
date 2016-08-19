@@ -19,6 +19,8 @@
   background-color: rgb(42, 65, 101);
 }
 
+
+
 .keys{
   position: relative;
   border-left: 3px solid #1d1919;
@@ -34,6 +36,11 @@
   background-color: rgb(33, 37, 43);
   color: black;
   border-radius: 10px;
+}
+
+.held{
+  background-color: rgb(97, 175, 239);
+  transition: background-color 0.3s ease;
 }
 
 /*

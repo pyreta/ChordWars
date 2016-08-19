@@ -1,15 +1,14 @@
 const React = require('react');
 const NoteConstants = require("../constants/note_constants");
+const MethodModule = require("../util/method_module");
+
 const PianoKey = React.createClass({
   notePath(){
     return `../assets/samples/${this.props.instrument}/${this.props.noteFileName}.mp3`;
   },
 
   playKey(){
-    let el = document.getElementById(`${this.props.noteFileName}`);
-    el.pause();
-    el.load();
-    el.play();
+    MethodModule.playKey(this.props.noteFileName);
   },
 
   margin(){
@@ -24,7 +23,7 @@ const PianoKey = React.createClass({
   render(){
 
     return (
-      <div onClick={this.playKey} className = {this.props.color + " key"} style={{"left":this.props.left, "zIndex":this.props.z, "marginLeft":this.margin()}}>
+      <div onClick={this.playKey} className={this.props.color + " key"} id={this.props.noteFileName + "-key"} style={{"left":this.props.left, "zIndex":this.props.z, "marginLeft":this.margin()}}>
         {NoteConstants[this.props.noteFileName].note}
         {
           <audio id={this.props.noteFileName}>
