@@ -5,12 +5,14 @@ const ChordWindow =  require("./components/chord_window");
 const ProgressBar =  require("./components/progress_bar");
 const ScoreBoard =  require("./components/score_board");
 const Controls =  require("./components/controls");
+const IntroModal =  require("./components/intro_modal");
 const chordFunctions = require("./util/chord_functions");
 const MethodModule = require("./util/method_module");
 const NoteConstants = require("./constants/note_constants");
 const KeyMap = require("./constants/key_map");
 const KeyActions = require("./actions/key_actions");
 const KeyStore = require("./stores/key_store");
+const timeLengths = {"easy": 50000, "medium":20000, "hard":7000};
 
 const App = React.createClass({
 
@@ -32,8 +34,10 @@ const App = React.createClass({
       health: 0,
       gameOver: false,
       points: 0,
+      difficulty: "easy",
+      timeLength: 100000,
       viewNotes: true,
-      chord: chordFunctions.generate(),
+      chord: {note: "C", voice: "", other: "", notes: [], body(){return "wars";}, pointValue(){}},
       notes: []
     };
   },
@@ -43,12 +47,12 @@ const App = React.createClass({
   },
 
   componentDidMount(){
-    this.startTimer();
     KeyStore.addListener(this.changePlayed);
   },
 
   componentWillMount(){
-    this.timeLength = 10000;
+    this.difficulty = "easy";
+    this.timeLength = timeLengths[this.difficulty];
     this.healthLength = 10000;
   },
 
@@ -73,19 +77,16 @@ const App = React.createClass({
     this.setState({ chord: chordFunctions.generate() });
   },
 
-  startTimer(){
+  startTimer(level){
     console.log(this.state.chord);
     let now = new Date();
     let nowSeconds = now.getTime();
     this.timeIntervalId = setInterval(()=>{
       let newTime = new Date().getTime() - nowSeconds;
       this.setState({timer: newTime, timerPercent: this.timeState()});
-      if (this.state.notes === this.state.chord.notes.sort()){
+      if (this.state.notes.join("") === this.state.chord.notes.slice(0).sort().join("")){
         this.restartTimer();
       }
-      console.log(this.state.notes);
-      console.log(this.state.chord.notes.sort());
-      console.log("");
       if (newTime >= this.timeLength){
         clearInterval(this.timeIntervalId);
         this.incrementHealth(this.state.chord.notes.length-2);
@@ -95,7 +96,9 @@ const App = React.createClass({
         }
       }
     }, 1);
-    this.timeLength = this.timeLength * 0.95;
+    if (this.difficulty !== "easy") {
+      this.timeLength = this.timeLength * 0.95;
+    }
   },
 
   restartTimer(){
@@ -106,19 +109,31 @@ const App = React.createClass({
   },
 
   addPoints(){
-    this.setState({ points: this.state.points+this.state.chord.pointValue()});
+    this.setState({ points: this.state.points+this.state.chord.pointValue(this.difficulty)});
   },
 
   gameOver(){
     clearInterval(this.healthIntervalId);
     clearInterval(this.timeIntervalId);
-    this.setState({ gameOver: true, chord: {note: ":", voice: "", other: "", notes: [], body(){return "(";}} });
+    this.setState({ gameOver: true, chord: {note: ":", voice: "", other: "", notes: [], body(){return "(";}, pointValue(){}} });
+  },
+
+  handleModalClick(level){
+    this.nextChord();
+    this.timeLength = timeLengths[level];
+    this.difficulty = level;
+    // this.setState({ difficulty: level, timeLength: timeLengths[level] });
+    this.startTimer();
+    // console.log(level);
+    // console.log(this.timeLength);
+    MethodModule.hideEl("intro-modal");
   },
 
   render() {
     let notes = this.state.viewNotes ? this.state.chord.notes.join(" ") : "";
     return (
         <div>
+          <IntroModal handleModalClick={ this.handleModalClick }/>
           <div className="group windows">
             <ChordWindow chord={ this.state.chord } notes={ notes }/>
             <ScoreBoard points={this.state.points}/>

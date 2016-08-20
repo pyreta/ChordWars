@@ -29,7 +29,7 @@ ChordWars is a game that trains the user to memorize chords.  A chord is display
 
 - [x] Create new project
 - [x] Flesh out interactive piano view using CSS and HTML
-- [ ] Create instructions modal
+- [x] Create instructions modal
 - [x] Create note constants
 - [x] Create random chord window
 - [x] Create Timer window
@@ -43,7 +43,7 @@ Random chord appears in chord window, and timer counts down on reload
 - [x] Create piano sample library
 - [x] Create all chord composition constants
 - [x] Create chord reading function  
-- [ ] Link function to window if chord is correct  
+- [x] Link function to window if chord is correct  
 
 ### Phase 3: Implement game structure (1 day, F 6pm)
 
@@ -58,5 +58,5 @@ Random chord appears in chord window, and timer counts down on reload
 ### Bonus Features (TBD)
 - [ ] Audio and visual effects
 - [ ] MIDI device compatibility
-- [ ] Tetris inspired stacking effect
+- [x] Mortal Kombat inspired health-bar effect
 - [ ] Music sychronized with chords
