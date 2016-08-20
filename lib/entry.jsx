@@ -6,6 +6,7 @@ const ProgressBar =  require("./components/progress_bar");
 const ScoreBoard =  require("./components/score_board");
 const Controls =  require("./components/controls");
 const IntroModal =  require("./components/intro_modal");
+const GameOverModal =  require("./components/game_over_modal");
 const chordFunctions = require("./util/chord_functions");
 const MethodModule = require("./util/method_module");
 const NoteConstants = require("./constants/note_constants");
@@ -113,6 +114,7 @@ const App = React.createClass({
   },
 
   gameOver(){
+    MethodModule.revealEl("game-over-modal");
     clearInterval(this.healthIntervalId);
     clearInterval(this.timeIntervalId);
     this.setState({ gameOver: true, chord: {note: ":", voice: "", other: "", notes: [], body(){return "(";}, pointValue(){}} });
@@ -134,6 +136,7 @@ const App = React.createClass({
     return (
         <div>
           <IntroModal handleModalClick={ this.handleModalClick }/>
+          <GameOverModal handleModalClick={ this.handleModalClick }/>
           <div className="group windows">
             <ChordWindow chord={ this.state.chord } notes={ notes }/>
             <ScoreBoard points={this.state.points}/>
