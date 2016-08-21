@@ -2,13 +2,13 @@
   /*float: left;*/
   display: inline-block;
   /*position: relative;*/
-  color: #4285f4;
   height: 408px;
   width: 70px;
   background-color: rgb(229, 192, 123);
   border-radius: 10px;
   border: 3px solid rgb(33, 37, 43);
   border-left: 0;
+  color: #21252b;
   /*-webkit-box-shadow: 1px 9px 49px 6px black;*/
 }
 
@@ -27,6 +27,8 @@
   position: relative;
   border-left: 3px solid #1d1919;
   border-radius: 14px;
+  text-align: center;
+
 }
 
 .key:hover{
@@ -42,7 +44,7 @@
   height: 260px;
   width: 50px;
   background-color: rgb(33, 37, 43);
-  color: black;
+  color: #e5c07b;
   border-radius: 10px;
 }
 
@@ -53,6 +55,23 @@
   -webkit-box-shadow: inset 4px 4px 45px black;
   transform: scale(0.97);
   transition: background-color 0.3s ease;
+}
+
+.note{
+
+  margin-top: 183px;
+  font-size: 27px;
+}
+
+.white-note{
+
+  margin-top: 327px;
+}
+
+.key-map{
+  /*color: #e5c07b;*/
+  font-size: 23px;
+  margin-top: 8px;
 }
 
 /*
@@ -67,7 +86,6 @@ rgb(229, 192, 123)
 #56b6c2;
 #98c379;
 */
-
 
 .key-container{
   width: 100px;

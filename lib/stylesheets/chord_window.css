@@ -2,7 +2,6 @@
   width: 422px;
   height: 177px;
   margin: 20px;
-  /*color: white;*/
   color: #98c379;
   padding-top: 20px;
   background-color: rgb(33, 37, 43);
@@ -32,4 +31,10 @@
   height: 100px;
   width: 100px;
   background-color: green;
+}
+
+.controls{
+  width: 165px;
+  font-size: 19px;
+  color: #686f7e;
 }

@@ -27,6 +27,40 @@ const App = React.createClass({
     return (pDec*100).toString() + "%";
   },
 
+  toggleVisible(klass, bool){
+    if(bool){
+      MethodModule.addClassToClass(klass, "invisible");
+      MethodModule.removeClassFromClass(klass, "visible");
+    } else {
+      MethodModule.removeClassFromClass(klass, "invisible");
+      MethodModule.addClassToClass(klass, "visible");
+    }
+  },
+  //
+  // toggleNotes(){
+  //   if(this.state.notesVisible){
+  //     MethodModule.addClassToClass("note", "invisible");
+  //     MethodModule.removeClassFromClass("note", "visible");
+  //     this.setState({ notesVisible: false });
+  //   } else {
+  //     MethodModule.removeClassFromClass("note", "invisible");
+  //     MethodModule.addClassToClass("note", "visible");
+  //     this.setState({ notesVisible: true });
+  //   }
+  // },
+
+  toggleKeyMap(){
+    this.toggleVisible("key-map", this.state.keyMapVisible);
+    let newState = this.state.keyMapVisible ? false : true;
+    this.setState({ keyMapVisible: newState });
+  },
+
+  toggleNotes(){
+    this.toggleVisible("note", this.state.notesVisible);
+    let newState = this.state.notesVisible ? false : true;
+    this.setState({ notesVisible: newState });
+  },
+
   getInitialState(){
     return {
       healthPercent: "0%",
@@ -35,6 +69,8 @@ const App = React.createClass({
       health: 0,
       gameOver: false,
       points: 0,
+      notesVisible: true,
+      keyMapVisible: true,
       difficulty: "easy",
       timeLength: 100000,
       viewNotes: true,
@@ -140,6 +176,7 @@ const App = React.createClass({
           <div className="group windows">
             <ChordWindow chord={ this.state.chord } notes={ notes }/>
             <ScoreBoard points={this.state.points}/>
+            <Controls notesCallback={this.toggleNotes} keyMapCallback={this.toggleKeyMap}/>
           </div>
 
           <ProgressBar restart={this.restartTimer} className="timer" width={ this.state.timerPercent } color="#56b6c2"/>
@@ -150,7 +187,21 @@ const App = React.createClass({
   }
 });
 
-
+// document.addEventListener("DOMContentLoaded", () => {
+//   ReactDOM.render(<App />, document.querySelector("#content"));
+//   document.addEventListener("keydown", (e)=>{
+//     MethodModule.playKey(KeyMap[e.key]);
+//     MethodModule.colorKey(KeyMap[e.key]);
+//     if (NoteConstants[KeyMap[e.key]]) {
+//       KeyActions.keyPressed(NoteConstants[KeyMap[e.key]].note);
+//     }
+//   });
+//   document.addEventListener("keyup", (e)=>{
+//     MethodModule.revertKey(KeyMap[e.key]);
+//     if (NoteConstants[KeyMap[e.key]]) {
+//       KeyActions.keyPressed(NoteConstants[KeyMap[e.key]].note);
+//     }  });
+// });
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(<App />, document.querySelector("#content"));
   document.addEventListener("keydown", (e)=>{
