@@ -4,23 +4,20 @@ const LevelButton = require("./level_button");
 const GameOverModal = React.createClass({
 
 
-  resetClicked(level){
-    console.log("reset");
-    // this.props.handleModalClick(level);
-  },
-
   render(){
 
     return (
       <div id="game-over-modal" className="hidden">
-        <div className="modal modal-background fade-in-op"></div>
+        <div className="modal modal-background fade-in-op end-modal"></div>
 
-        <div className="modal modal-content fade-in">
-            Game<span>Over</span>
+        <div className="modal modal-content fade-in end-modal">
+            GAME OVER<span></span>
             <h2>{"Don't worry that wasn't so bad"}</h2>
-            <p>Now either go make a sandwich or check out the repo by clicking <a href="#">here</a></p>
+            <p>Now either go into your kitchen and make a sandwich or check out the repo by clicking <a className="glow" href="https://github.com/pyreta/ChordWars">here</a></p>
             <h2>Or</h2>
-            <LevelButton level="Play Again" clickCallback = {this.resetClicked} />
+
+            <LevelButton level="PLAY AGAIN" clickCallback = {this.props.resetCallback} />
+
         </div>
 
       </div>

@@ -101,9 +101,7 @@ const App = React.createClass({
   },
 
   componentWillMount(){
-    this.difficulty = "easy";
-    this.timeLength = timeLengths[this.difficulty];
-    this.healthLength = 10000;
+    this.setDefaults();
   },
 
   incrementHealth(amount){
@@ -180,15 +178,50 @@ const App = React.createClass({
     MethodModule.hideEl("intro-modal");
   },
 
+  setDefaults(){
+    this.difficulty = "easy";
+    this.timeLength = timeLengths[this.difficulty];
+    this.healthLength = 10000;
+  },
+
+  reset(){
+    console.log("reset");
+    this.setState({
+          healthPercent: "0%",
+          timerPercent: "0%",
+          timer: 0,
+          health: 0,
+          gameOver: false,
+          points: 0,
+          notesVisible: true,
+          chordNotesVisible: true,
+          keyMapVisible: true,
+          difficulty: "easy",
+          timeLength: 100000,
+          viewNotes: true,
+          sound: true,
+          chord: {note: "C", voice: "", other: "", notes: [], body(){return "wars";}, pointValue(){}},
+          notes: []
+        });
+    this.setDefaults();
+    MethodModule.revealEl("intro-modal");
+    MethodModule.hideEl("game-over-modal");
+  },
+
   render() {
     let notes = this.state.viewNotes ? this.state.chord.notes.join(" ") : "";
     return (
         <div>
           <IntroModal handleModalClick={ this.handleModalClick }/>
-          <GameOverModal handleModalClick={ this.handleModalClick }/>
+          <GameOverModal resetCallback={ this.reset }/>
           <div className="group windows">
+            <a href="https://github.com/pyreta/ChordWars">
+              <div className="github-icon backlit-text">
+                <i className="fa fa-github" aria-hidden="true"></i>
+              </div>
+            </a>
             <ChordWindow chord={ this.state.chord } notes={ notes }/>
-            <ScoreBoard points={this.state.points}/>
+            <ScoreBoard onClick={this.reset} points={this.state.points}/>
             <Controls notesCallback={this.toggleNotes} keyMapCallback={this.toggleKeyMap} soundCallback={this.toggleSound} chordNotesCallback={this.toggleChordNotes}/>
           </div>
 

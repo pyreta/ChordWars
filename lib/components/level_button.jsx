@@ -6,7 +6,6 @@ const LevelButton = React.createClass({
   },
 
   render(){
-
     return (
       <div onClick={this.clicked} className = {this.props.level + "-button level-button"}>
         {this.props.level}
