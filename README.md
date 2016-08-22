@@ -1,62 +1,33 @@
 # ChordWars
 
-[Heroku link][heroku]
+[ChordWars live][live]
 
-[heroku]: https://kickrestarter.herokuapp.com/
+[live]: https://pyreta.github.io/ChordWars/
 
-## Minimum Viable Product
+ChordWars is single page browser game designed for music education.  Upon starting the game, the player must play a randomly displayed chord on a virtual piano before the time runs out.  If the chord is not played in time, the penalty bar will rise.  Once the penalty bar reaches a certain threshold, the game is over.  ChordWars is built with a React.js and flux architecture allowing for seamless animation and a dynamic user interface.
 
-ChordWars is a game that trains the user to memorize chords.  A chord is displayed at random along with a timer, and the user has to play that chord before the clock runs out.  I plan on creating this keyboard using HTML5 audio tags, jQuery, and possibly React.js.  By the end of Week 10, this app will, at a minimum, satisfy the following criteria:
-
-
-- [ ] Hosting on Heroku
-- [ ] A production README
-- [x] Elegant and interactive piano layout
-- [x] Random chord viewer with timer
-- [x] Points system
+## Features & Implementation
 
 
-## Design Docs
-* [View Wireframes][views]
+### Single-Page App
 
-[views]: docs/views.md
+  ChordWars is a single page app that renders everything within one element on the root page using React.js.  Each of the components behave in different ways according to various independent states.
 
-## Implementation Timeline
+### This production README is not finished, so don't even both reading on.
 
-### Phase 1: Basic Piano, view window and timer setup (1 day, W 6pm)
+  `Campaign`s are stored in the database as belonging to a `creator`, and having many `rewards`.  Upon rendering the `Campaign` show page, rewards are collected through a non n+1 SQL call to join the `rewards` and `campaigns` tables.  Unlimited `reward`s may be created at the same time the `campaign` is created, and then all the information is sent to the database together.
 
-**Objective:** Piano layout with keys changing color when pressed
+  ![image of campaign form](docs/kickrestarter.png)
 
-- [x] Create new project
-- [x] Flesh out interactive piano view using CSS and HTML
-- [x] Create instructions modal
-- [x] Create note constants
-- [x] Create random chord window
-- [x] Create Timer window
+  `Campaign`index items dynamically reflect the percent pledged through a progress bar with a width calculated in real time:
 
-### Phase 2: Sounds, music theory logic, and random chord display (1 day, Th 6pm)
-
-**Objective:** Piano audio samples are linked to piano key clicks and QWERTY keyboard presses.  
-Random chord appears in chord window, and timer counts down on reload
-
-- [x] Create key press constants
-- [x] Create piano sample library
-- [x] Create all chord composition constants
-- [x] Create chord reading function  
-- [x] Link function to window if chord is correct  
-
-### Phase 3: Implement game structure (1 day, F 6pm)
-
-**Objective:** Allow game to begin upon closing of modal
-
-- [x] Create points system for chord difficulty
-- [x] Tally score during game play
-- [x] End game when timer runs out
-- [x] Final styling
+  ![image of progress-bar code](docs/progress-bar.png)
 
 
-### Bonus Features (TBD)
-- [ ] Audio and visual effects
-- [ ] MIDI device compatibility
-- [x] Mortal Kombat inspired health-bar effect
-- [ ] Music sychronized with chords
+### Pledges
+
+  `Pledges` are the join table that links `rewards` with `campaigns` and `users`.  `User`s can have many `rewards` through their `pledges` and a `campaign` can have many `backers` through `pledges`.  The `campaign` display page has React components for each linked `reward` which aggregates the total number of `backer`s for each reward through it's `pledges.`  Users can select `reward`s from this page and choose to   make a `pledge` for a minimum amount.
+
+### Search
+
+Searching campaigns is a standard feature of Kickstarter.  Users can do a realtime search right from the Navbar.
