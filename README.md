@@ -52,7 +52,7 @@ Random chord appears in chord window, and timer counts down on reload
 - [x] Create points system for chord difficulty
 - [x] Tally score during game play
 - [x] End game when timer runs out
-- [ ] Final styling
+- [x] Final styling
 
 
 ### Bonus Features (TBD)
