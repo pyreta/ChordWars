@@ -5,8 +5,10 @@ const Controls = React.createClass({
     return (
       <div className="chord-window controls">
         CONTROLS
-        <div onClick={ this.props.notesCallback }>NOTES</div>
-        <div onClick={ this.props.keyMapCallback }>KEYMAP</div>
+
+        <div className={"reveal-notes reveal-button glow"} onClick={ this.props.notesCallback }>KEY NOTES</div>
+        <div className={"reveal-map reveal-button glow"} onClick={ this.props.keyMapCallback }>KEYMAP</div>
+        <div className={"reveal-map reveal-button glow"} onClick={ this.props.keyMapCallback }>CHORD NOTES</div>
       </div>
     );
   }
