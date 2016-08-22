@@ -4,7 +4,7 @@ const MethodModule = require("../util/method_module");
 
 const PianoKey = React.createClass({
   notePath(){
-    return `../assets/samples/${this.props.instrument}/${this.props.noteFileName}.mp3`;
+    return `./assets/samples/${this.props.instrument}/${this.props.noteFileName}.mp3`;
   },
 
   playKey(){
