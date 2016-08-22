@@ -31,23 +31,13 @@ const App = React.createClass({
     if(bool){
       MethodModule.addClassToClass(klass, "invisible");
       MethodModule.removeClassFromClass(klass, "visible");
+      MethodModule.removeClassFromClass(klass+"-toggle-button", "glow");
     } else {
       MethodModule.removeClassFromClass(klass, "invisible");
       MethodModule.addClassToClass(klass, "visible");
+      MethodModule.addClassToClass(klass+"-toggle-button", "glow");
     }
   },
-  //
-  // toggleNotes(){
-  //   if(this.state.notesVisible){
-  //     MethodModule.addClassToClass("note", "invisible");
-  //     MethodModule.removeClassFromClass("note", "visible");
-  //     this.setState({ notesVisible: false });
-  //   } else {
-  //     MethodModule.removeClassFromClass("note", "invisible");
-  //     MethodModule.addClassToClass("note", "visible");
-  //     this.setState({ notesVisible: true });
-  //   }
-  // },
 
   toggleKeyMap(){
     this.toggleVisible("key-map", this.state.keyMapVisible);
@@ -61,6 +51,26 @@ const App = React.createClass({
     this.setState({ notesVisible: newState });
   },
 
+  toggleChordNotes(){
+    this.toggleVisible("chord-notes", this.state.chordNotesVisible);
+    let newState = this.state.chordNotesVisible ? false : true;
+    this.setState({ chordNotesVisible: newState });
+  },
+
+  toggleSound(){
+    KeyActions.toggleSound();
+  },
+
+  setSound(){
+    console.log("SOUNDDD");
+    this.setState({ sound: KeyStore.sound() });
+    if (KeyStore.sound()){
+      MethodModule.addClassToClass("sound-toggle-button", "glow");
+    } else {
+      MethodModule.removeClassFromClass("sound-toggle-button", "glow");
+    }
+  },
+
   getInitialState(){
     return {
       healthPercent: "0%",
@@ -70,10 +80,12 @@ const App = React.createClass({
       gameOver: false,
       points: 0,
       notesVisible: true,
+      chordNotesVisible: true,
       keyMapVisible: true,
       difficulty: "easy",
       timeLength: 100000,
       viewNotes: true,
+      sound: true,
       chord: {note: "C", voice: "", other: "", notes: [], body(){return "wars";}, pointValue(){}},
       notes: []
     };
@@ -85,6 +97,7 @@ const App = React.createClass({
 
   componentDidMount(){
     KeyStore.addListener(this.changePlayed);
+    KeyStore.addListener(this.setSound);
   },
 
   componentWillMount(){
@@ -176,7 +189,7 @@ const App = React.createClass({
           <div className="group windows">
             <ChordWindow chord={ this.state.chord } notes={ notes }/>
             <ScoreBoard points={this.state.points}/>
-            <Controls notesCallback={this.toggleNotes} keyMapCallback={this.toggleKeyMap}/>
+            <Controls notesCallback={this.toggleNotes} keyMapCallback={this.toggleKeyMap} soundCallback={this.toggleSound} chordNotesCallback={this.toggleChordNotes}/>
           </div>
 
           <ProgressBar restart={this.restartTimer} className="timer" width={ this.state.timerPercent } color="#56b6c2"/>
@@ -187,21 +200,6 @@ const App = React.createClass({
   }
 });
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   ReactDOM.render(<App />, document.querySelector("#content"));
-//   document.addEventListener("keydown", (e)=>{
-//     MethodModule.playKey(KeyMap[e.key]);
-//     MethodModule.colorKey(KeyMap[e.key]);
-//     if (NoteConstants[KeyMap[e.key]]) {
-//       KeyActions.keyPressed(NoteConstants[KeyMap[e.key]].note);
-//     }
-//   });
-//   document.addEventListener("keyup", (e)=>{
-//     MethodModule.revertKey(KeyMap[e.key]);
-//     if (NoteConstants[KeyMap[e.key]]) {
-//       KeyActions.keyPressed(NoteConstants[KeyMap[e.key]].note);
-//     }  });
-// });
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(<App />, document.querySelector("#content"));
   document.addEventListener("keydown", (e)=>{

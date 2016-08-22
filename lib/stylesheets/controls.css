@@ -1,8 +1,9 @@
 .reveal-button{
   font-size: 18px;
-  margin: 17px;
+  margin: 11px;
   font-weight: bold;
   color: gray;
+  font-style: normal;
 }
 
 .glow{
@@ -12,12 +13,15 @@
 
 .reveal-button:hover{
   cursor: pointer;
-  color:white;
+  /*color:white;*/
+  text-shadow: 6px 11px 5px black;
+  transform: scale(1.1);
+  transition: all .3s ease-in-out;
 }
 
 
 .controls{
-  width: 165px;
-  font-size: 16px;
-  color: #686f7e;
+  width: 178px;
+  font-size: 30px;
+  color: #e5c07b;
 }

@@ -7,7 +7,7 @@
   background-color: rgb(33, 37, 43);
   border: 24px solid rgb(33, 37, 43);
   border-radius: 73px;
-  overflow: hidden;
+  /*overflow: hidden;*/
   text-align: center;
   font-size: 122px;
   float: left;
