@@ -185,6 +185,7 @@ const App = React.createClass({
   },
 
   reset(){
+
     console.log("reset");
     this.setState({
           healthPercent: "0%",
@@ -203,6 +204,8 @@ const App = React.createClass({
           chord: {note: "C", voice: "", other: "", notes: [], body(){return "wars";}, pointValue(){}},
           notes: []
         });
+
+    clearInterval(this.healthIntervalId);
     this.setDefaults();
     MethodModule.revealEl("intro-modal");
     MethodModule.hideEl("game-over-modal");

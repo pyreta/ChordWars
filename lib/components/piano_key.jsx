@@ -11,6 +11,10 @@ const PianoKey = React.createClass({
     MethodModule.playKey(this.props.noteFileName);
   },
 
+  componentDidMount(){
+    document.getElementById(this.props.noteFileName).load();
+  },
+
   margin(){
     let octave = parseInt(this.props.noteFileName.slice(-1,this.props.noteFileName.length));
     let margin = 0;
