@@ -1,0 +1,87 @@
+@media (max-width: 1550px) {
+  .github-icon, .hide-note-1550px {
+    display: none;
+  }
+  .progress, .windows{
+    width: 1286px;
+  }
+  .piano-base{
+    width: 1244px;
+  }
+}
+
+
+
+@media (max-height: 850px) {
+  .piano-base{
+    height: 310px;
+  }
+  .white{
+    height: 343px;
+  }
+  .black{
+    height: 222px;
+  }
+  .note {
+    margin-top: 146px;
+  }
+  .white-note {
+    margin-top: 266px;
+  }
+  .chord-window, .score-board{
+    height:166px;
+    padding-top: 0;
+  }
+  .controls{
+    font-size: 25px;
+  }
+  .github-icon{
+    font-size: 242px;
+  }
+  .modal>p{
+    font-size: 12px;
+    width: 341px;
+  }
+  .modal{
+    height: 430px;
+    font-size: 49px;
+    width:430px;
+    left: 34%;
+  }
+}
+
+@media (max-width: 1350px) {
+  .github-icon, .hide-note-1350px {
+    display: none;
+  }
+  .progress, .windows{
+    width: 1137px;
+  }
+  .piano-base{
+    width: 1098px;
+  }
+  .chord-window, .score-board, .score{
+    width:325px;
+    font-size: 67px;
+    height: 94px;
+    /*padding-top: 0;*/
+  }
+  .controls{
+    font-size: 25px;
+    width: 222px;
+  }
+  .reveal-button{
+    font-size: 13px;
+    margin: 0;
+  }
+  .hide-note-1350px, .hide-note-1550px {
+    display: none;
+  }
+  .chord-notes{
+    font-size: 14px;
+  }
+  .end-modal{
+    height: 384;
+  }
+
+}

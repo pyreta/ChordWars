@@ -26,8 +26,12 @@ const PianoKey = React.createClass({
 
   render(){
     let hidden = "";
-    let hideKey = {"black": 11, "white": 16};
-    if (this.props.idx > hideKey[this.props.color]){
+    let hideKey1550 = {"black": 11, "white": 16};
+    let hideKey1350 = {"black": 9, "white": 14};
+    if (this.props.idx > hideKey1350[this.props.color]){
+      hidden = " hide-note-1350px";
+    }
+    if (this.props.idx > hideKey1550[this.props.color] && hidden !== ""){
       hidden = " hide-note-1550px";
     }
     return (
