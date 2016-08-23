@@ -21,9 +21,13 @@ const PianoKey = React.createClass({
   },
 
   render(){
-
+    let hidden = "";
+    let hideKey = {"black": 11, "white": 16};
+    if (this.props.idx > hideKey[this.props.color]){
+      hidden = " hide-note-1550px";
+    }
     return (
-      <div onClick={this.playKey} className={this.props.color + " key"} id={this.props.noteFileName + "-key"} style={{"left":this.props.left, "zIndex":this.props.z, "marginLeft":this.margin()}}>
+      <div onClick={this.playKey} className={this.props.color + " key"+hidden} id={this.props.noteFileName + "-key"} style={{"left":this.props.left, "zIndex":this.props.z, "marginLeft":this.margin()}}>
 
         <div className={this.props.color + "-key-map key-map"}>{NoteConstants[this.props.noteFileName].key}</div>
         <div className={this.props.color + "-note note"}>{NoteConstants[this.props.noteFileName].note}</div>

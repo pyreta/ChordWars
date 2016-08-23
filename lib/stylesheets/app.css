@@ -42,3 +42,49 @@
 .backlit{
   box-shadow: -1px 1px 37px #60aeee;
 }
+
+@media (max-width: 1550px) {
+  .github-icon, .hide-note-1550px {
+    display: none;
+  }
+  .progress, .windows{
+    width: 1286px;
+  }
+  .piano-base{
+    width: 1244px;
+  }
+}
+
+@media (max-height: 920px) {
+  .piano-base{
+    height: 310px;
+  }
+  .white{
+    height: 343px;
+  }
+  .black{
+    height: 222px;
+  }
+  .note {
+    margin-top: 146px;
+  }
+  .white-note {
+    margin-top: 266px;
+  }
+  .chord-window, .score-board{
+    height:166px;
+    padding-top: 0;
+  }
+  .controls{
+    font-size: 25px;
+  }
+  .github-icon{
+    font-size: 242px;
+  }
+  .modal{
+    height: 605px;
+  }
+  .modal>p{
+    font-size: 12px;
+  }
+}
