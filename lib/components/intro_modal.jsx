@@ -17,7 +17,7 @@ const IntroModal = React.createClass({
         <div className="modal modal-content fade-in">
             Chord<span>Wars</span>
             <h2>Instructions:</h2>
-            <p>Play the right chord before the timer runs out.  Use the controlls to reveal notes of the chord, notes of each key, and keyoard mapping.  If you get a good score, this should increase your self esteem drastically.</p>
+            <p>Play the right chord before the timer runs out.  Use the controls to reveal notes of the chord, notes of each key, and keyboard mapping.  If you get a good score, this should increase your self-esteem drastically.</p>
             <h2>Choose difficulty:</h2>
             <LevelButton level="easy" clickCallback = {this.levelClicked}/>
             <LevelButton level="medium" clickCallback = {this.levelClicked} />
