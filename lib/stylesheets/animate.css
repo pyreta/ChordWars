@@ -106,16 +106,6 @@
   }
 }
 
-@-webkit-keyframes flash-fast {
-  from, 50%, to {
-    opacity: 1;
-  }
-
-  25%, 75% {
-    opacity: 0;
-  }
-}
-
 @keyframes flash {
   from, 50%, to {
     opacity: 1;
@@ -126,22 +116,7 @@
   }
 }
 
-@keyframes flash-fast {
-  from, 50%, to {
-    opacity: 1;
-  }
-
-  25%, 75% {
-    opacity: 0;
-  }
-}
-
 .flash {
-  -webkit-animation-name: flash;
-  animation-name: flash;
-}
-
-.flash-fast {
   -webkit-animation-name: flash;
   animation-name: flash;
 }

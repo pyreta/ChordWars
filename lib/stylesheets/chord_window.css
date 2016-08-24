@@ -21,10 +21,10 @@
 .note-name{
   color: rgb(224, 108, 117);
 }
-}
+
 
 .note-voice{
-  color: rgb(97, 175, 239);
+  /*color: rgb(97, 175, 239);*/
 }
 
 .box{
