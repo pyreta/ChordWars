@@ -33,7 +33,9 @@ ChordWars is single page browser game designed for music education.  Upon starti
   ![end-modal](docs/chord-window.png)
   Chord key and character is randomly selected within a `Chord` class.  Each instance of the `Chord` class has a `notes()` function.  This function references the `Note` class to calculate the appropriate intervals.
 
+
   Chord Class:
+
   ![end-modal](docs/chord.png)
 
   Note Class:
