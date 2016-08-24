@@ -12,9 +12,9 @@ const IntroModal = React.createClass({
 
     return (
       <div id="intro-modal">
-        <div className="modal modal-background fade-in-op"></div>
+        <div className="modal modal-background animated zoomIn"></div>
 
-        <div className="modal modal-content fade-in">
+        <div className="modal modal-content animated zoomIn">
             Chord<span>Wars</span>
             <h2>Instructions:</h2>
             <p>Play the right chord before the timer runs out.  Use the controls to reveal notes of the chord, notes of each key, and keyboard mapping.  If you get a good score, this should increase your self-esteem drastically.</p>

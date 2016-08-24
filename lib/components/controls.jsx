@@ -3,7 +3,7 @@ const React = require('react');
 const Controls = React.createClass({
   render(){
     return (
-      <div className="chord-window controls">
+      <div className="chord-window controls animated zoomIn">
         Controls
 
         <div className={"note-toggle-button reveal-button glow"} onClick={ this.props.notesCallback }>KEY NOTES</div>

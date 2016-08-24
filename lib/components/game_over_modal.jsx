@@ -8,9 +8,9 @@ const GameOverModal = React.createClass({
 
     return (
       <div id="game-over-modal" className="hidden">
-        <div className="modal modal-background fade-in-op end-modal"></div>
+        <div className="modal modal-background end-modal"></div>
 
-        <div className="modal modal-content fade-in end-modal">
+        <div className="modal modal-content end-modal">
             GAME OVER<span></span>
             <h2>{"Don't worry that wasn't so bad"}</h2>
             <p>Now either go into your kitchen and make a sandwich or check out the repo by clicking <a className="glow" href="https://github.com/pyreta/ChordWars">here</a></p>

@@ -98,6 +98,10 @@ const App = React.createClass({
   componentDidMount(){
     KeyStore.addListener(this.changePlayed);
     KeyStore.addListener(this.setSound);
+    setTimeout(()=>{
+      MethodModule.removeClassFromClass("github-icon", "zoomIn");
+      MethodModule.removeClassFromClass("github-icon", "animated");
+    }, 1000);
   },
 
   componentWillMount(){
@@ -105,16 +109,25 @@ const App = React.createClass({
   },
 
   incrementHealth(amount){
-    let goal = this.state.health + (amount*1000);
-    this.healthIntervalId = setInterval(()=>{
-      let newHealth = this.state.health+=100;
-      this.setState({health: newHealth, healthPercent: this.healthState()});
-      if ((newHealth >= this.healthLength) || (newHealth >= goal)){
-        clearInterval(this.healthIntervalId);
-      } if ( this.state.healthPercent === "100%" ){
-        this.gameOver();
-      }
-    },1);
+    setTimeout(()=>{
+      let goal = this.state.health + (amount*1000);
+      this.healthIntervalId = setInterval(()=>{
+        let newHealth = this.state.health+=100;
+        this.setState({health: newHealth, healthPercent: this.healthState()});
+        if ((newHealth >= this.healthLength) || (newHealth >= goal)){
+          clearInterval(this.healthIntervalId);
+        } if ( this.state.healthPercent === "100%" ){
+          this.gameOver();
+        }
+      },1);
+
+    }, 0);
+    MethodModule.addClassToClass("red-progress", "flash");
+    MethodModule.addClassToClass("red-progress", "animated");
+    setTimeout(()=>{
+      MethodModule.removeClassFromClass("red-progress", "flash");
+      MethodModule.removeClassFromClass("red-progress", "animated");
+    }, 2000);
   },
 
   healthTest(){
@@ -122,6 +135,12 @@ const App = React.createClass({
   },
 
   nextChord(){
+    MethodModule.addClassToClass("chord", "zoomIn");
+    MethodModule.addClassToClass("chord", "animated");
+    setTimeout(()=>{
+      MethodModule.removeClassFromClass("chord", "zoomIn");
+      MethodModule.removeClassFromClass("chord", "animated");
+    }, 2000);
     this.setState({ chord: chordFunctions.generate() });
   },
 
@@ -158,10 +177,22 @@ const App = React.createClass({
 
   addPoints(){
     this.setState({ points: this.state.points+this.state.chord.pointValue(this.difficulty)});
+    MethodModule.removeClassFromClass("score", "bounce");
+    MethodModule.removeClassFromClass("score", "animated");
+    setTimeout(()=>{
+      MethodModule.addClassToClass("score", "bounce");
+      MethodModule.addClassToClass("score", "animated");
+    }, 10);
   },
 
   gameOver(){
     MethodModule.revealEl("game-over-modal");
+    MethodModule.addClassToClass("modal", "zoomIn");
+    MethodModule.addClassToClass("modal", "animated");
+    setTimeout(()=>{
+      MethodModule.removeClassFromClass("modal", "zoomIn");
+      MethodModule.removeClassFromClass("modal", "animated");
+    }, 5000);
     clearInterval(this.healthIntervalId);
     clearInterval(this.timeIntervalId);
     this.setState({ gameOver: true, chord: {note: ":", voice: "", other: "", notes: [], body(){return "(";}, pointValue(){}} });
@@ -219,7 +250,7 @@ const App = React.createClass({
           <GameOverModal resetCallback={ this.reset }/>
           <div className="group windows">
             <a href="https://github.com/pyreta/ChordWars">
-              <div className="github-icon backlit-text">
+              <div className="github-icon backlit-text animated zoomIn">
                 <i className="fa fa-github" aria-hidden="true"></i>
               </div>
             </a>

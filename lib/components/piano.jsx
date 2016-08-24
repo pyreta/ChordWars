@@ -52,8 +52,8 @@ const Piano = React.createClass({
 
   render(){
     return (
-      <div className="piano-base">
-        <div className="keys">
+      <div className="piano-base animated zoomIn">
+        <div className="keys animated zoomIn">
           { this.whiteKeys() }
           { this.blackKeys() }
         </div>
