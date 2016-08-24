@@ -27,6 +27,7 @@ ChordWars is single page browser game designed for music education.  Upon starti
   Controls are displayed allowing for scaffolds during learning which may be switched on or off based on preference and experience level.  This adds another dimension to matching the games challenge with the players ability.
 
   ![controls](docs/controls.png)
+  
 ### Chord Logic
 
   Every Chord that appears in the chord window is generated randomly, and then displayed in the window.
