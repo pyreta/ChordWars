@@ -131,7 +131,8 @@ const App = React.createClass({
   },
 
   healthTest(){
-    this.incrementHealth(2);
+    // uncomment to test
+    // this.incrementHealth(2);
   },
 
   nextChord(){
@@ -259,8 +260,8 @@ const App = React.createClass({
             <Controls notesCallback={this.toggleNotes} keyMapCallback={this.toggleKeyMap} soundCallback={this.toggleSound} chordNotesCallback={this.toggleChordNotes}/>
           </div>
 
-          <ProgressBar restart={this.restartTimer} className="timer" width={ this.state.timerPercent } color="#56b6c2"/>
-          <ProgressBar restart={this.healthTest} className="health" width={ this.state.healthPercent } color="red"/>
+          <ProgressBar className="timer" width={ this.state.timerPercent } color="#56b6c2"/>
+          <ProgressBar className="health" width={ this.state.healthPercent } color="red"/>
           <Piano />
         </div>
     );
