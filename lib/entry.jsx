@@ -106,6 +106,9 @@ const App = React.createClass({
   },
 
   updateMidiController(manufacturer, model){
+    if (manufacturer){
+      this.toggleKeyMap();
+    }
     let midi = `${manufacturer} ${model}`.split("Port")[0].split(" ").join(" ");
     this.setState({ midiController: midi + " connected" });
   },
