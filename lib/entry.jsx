@@ -115,7 +115,9 @@ const App = React.createClass({
         let input = WebMidi.inputs[0];
         input.addListener('noteon', "all",
           (e)=>{
-            MethodModule.playKey("D2");
+            MethodModule.playKey(e.note.name+e.note.octave);
+            MethodModule.colorKey(e.note.name+e.note.octave);
+            KeyActions.keyPressed(NoteConstants[e.note.name+e.note.octave].note);
             console.log(e.note);
           }
         );
