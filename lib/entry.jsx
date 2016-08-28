@@ -106,6 +106,22 @@ const App = React.createClass({
 
   componentWillMount(){
     this.setDefaults();
+
+    WebMidi.enable(function (err) {
+      if (err) {
+        console.log("WebMidi could not be enabled.", err);
+      } else {
+        console.log("WebMidi enabled!");
+        let input = WebMidi.inputs[0];
+        input.addListener('noteon', "all",
+          (e)=>{
+            MethodModule.playKey("D2");
+            console.log(e.note);
+          }
+        );
+      }
+    });
+
   },
 
   incrementHealth(amount){
