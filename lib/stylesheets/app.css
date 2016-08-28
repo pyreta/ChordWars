@@ -42,3 +42,13 @@
 .backlit{
   box-shadow: -1px 1px 37px #60aeee;
 }
+
+.midi-display{
+  position: absolute;
+  right: 69px;
+  top: 11px;
+  font-size: 20px;
+  font-style: italic;
+  color: #38526a;
+  text-shadow: 6px 4px 5px black;
+}

@@ -85,6 +85,7 @@ const App = React.createClass({
       difficulty: "easy",
       timeLength: 100000,
       viewNotes: true,
+      midiController: "No MIDI controller connected",
       sound: true,
       chord: {note: "C", voice: "", other: "", notes: [], body(){return "wars";}, pointValue(){}},
       notes: []
@@ -104,15 +105,21 @@ const App = React.createClass({
     }, 1000);
   },
 
+  updateMidiController(manufacturer, model){
+    let midi = `${manufacturer} ${model}`.split("Port")[0].split(" ").join(" ");
+    this.setState({ midiController: midi + " connected" });
+  },
+
   componentWillMount(){
     this.setDefaults();
-
+    let that = this;
     WebMidi.enable(function (err) {
       if (err) {
         console.log("WebMidi could not be enabled.", err);
       } else {
         console.log("WebMidi enabled!");
         let input = WebMidi.inputs[0];
+        that.updateMidiController(input.manufacturer, input.name);
         input.addListener('noteon', "all",
           (e)=>{
             let noteName = (e.note.name+e.note.octave).split("#").join("sharp");
@@ -190,8 +197,6 @@ const App = React.createClass({
       }
     }, 1);
     this.timeLength = this.timeLength * 0.90;
-    // if (this.difficulty !== "easy") {
-    // }
   },
 
   restartTimer(){
@@ -228,10 +233,7 @@ const App = React.createClass({
     this.nextChord();
     this.timeLength = timeLengths[level];
     this.difficulty = level;
-    // this.setState({ difficulty: level, timeLength: timeLengths[level] });
     this.startTimer();
-    // console.log(level);
-    // console.log(this.timeLength);
     MethodModule.hideEl("intro-modal");
   },
 
@@ -242,8 +244,6 @@ const App = React.createClass({
   },
 
   reset(){
-
-    console.log("reset");
     this.setState({
           healthPercent: "0%",
           timerPercent: "0%",
@@ -284,7 +284,7 @@ const App = React.createClass({
             <ScoreBoard onClick={this.reset} points={this.state.points}/>
             <Controls notesCallback={this.toggleNotes} keyMapCallback={this.toggleKeyMap} soundCallback={this.toggleSound} chordNotesCallback={this.toggleChordNotes}/>
           </div>
-
+          <div className = "midi-display animated slideInRight">{ this.state.midiController }</div>
           <ProgressBar className="timer" width={ this.state.timerPercent } color="#56b6c2"/>
           <ProgressBar className="health" width={ this.state.healthPercent } color="red"/>
           <Piano />
