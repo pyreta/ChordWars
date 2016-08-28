@@ -121,6 +121,11 @@ const App = React.createClass({
             console.log(e.note);
           }
         );
+        input.addListener('noteoff', "all",
+          (e)=>{
+            console.log(e.note);
+          }
+        );
       }
     });
 
