@@ -13,7 +13,7 @@ const NoteConstants = require("./constants/note_constants");
 const KeyMap = require("./constants/key_map");
 const KeyActions = require("./actions/key_actions");
 const KeyStore = require("./stores/key_store");
-const timeLengths = {"easy": 50000, "medium":20000, "hard":7000};
+const timeLengths = {"easy": 50000, "medium":20000, "hard":10000};
 
 const App = React.createClass({
 
@@ -118,15 +118,13 @@ const App = React.createClass({
             let noteName = (e.note.name+e.note.octave).split("#").join("sharp");
             MethodModule.playKey(noteName);
             MethodModule.colorKey(noteName);
-            KeyActions.keyPressed(NoteConstants[e.note.name+e.note.octave].note);
-            console.log(e.note);
+            KeyActions.keyPressed(e.note.name);
           }
         );
         input.addListener('noteoff', "all",
           (e)=>{
             let noteName = (e.note.name+e.note.octave).split("#").join("sharp");
             MethodModule.revertKey(noteName);
-            console.log(e.note.name);
             KeyActions.keyReleased(e.note.name);
           }
         );
@@ -191,9 +189,9 @@ const App = React.createClass({
         }
       }
     }, 1);
-    if (this.difficulty !== "easy") {
-      this.timeLength = this.timeLength * 0.95;
-    }
+    this.timeLength = this.timeLength * 0.90;
+    // if (this.difficulty !== "easy") {
+    // }
   },
 
   restartTimer(){
