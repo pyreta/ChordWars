@@ -184,13 +184,15 @@ const App = React.createClass({
   nextChord(){
     MethodModule.addClassToClass("chord", "zoomIn");
     MethodModule.addClassToClass("chord", "animated");
+    let nextChord = chordFunctions.generate();
     setTimeout(()=>{
       MethodModule.removeClassFromClass("chord", "zoomIn");
       MethodModule.removeClassFromClass("chord", "animated");
     }, 2000);
-    let nextChord = chordFunctions.generate();
+    setTimeout(()=>{
+      this.playChord(nextChord.notes);
+    }, 700);
     this.setState({ chord: nextChord });
-    this.playChord(nextChord.notes);
   },
 
   startTimer(level){
