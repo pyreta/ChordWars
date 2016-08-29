@@ -170,6 +170,17 @@ const App = React.createClass({
     // this.incrementHealth(2);
   },
 
+  playChord(notes){
+    notes.forEach((note)=>{
+      let noteFormat = (note+"3").split("#").join("sharp");
+      console.log("THIS NOTE");
+      console.log(noteFormat);
+      MethodModule.playKey(noteFormat);
+    });
+    MethodModule.playKey((notes[0]+"2").split("#").join("sharp"));
+    MethodModule.playKey((notes[0]+"1").split("#").join("sharp"));
+  },
+
   nextChord(){
     MethodModule.addClassToClass("chord", "zoomIn");
     MethodModule.addClassToClass("chord", "animated");
@@ -177,7 +188,9 @@ const App = React.createClass({
       MethodModule.removeClassFromClass("chord", "zoomIn");
       MethodModule.removeClassFromClass("chord", "animated");
     }, 2000);
-    this.setState({ chord: chordFunctions.generate() });
+    let nextChord = chordFunctions.generate();
+    this.setState({ chord: nextChord });
+    this.playChord(nextChord.notes);
   },
 
   startTimer(level){
