@@ -9,9 +9,12 @@ ChordWars is single page browser game designed for music education.  Upon starti
 ## Features & Implementation
 
 
-### Single-Page App
 
-  ChordWars is a single page app that renders everything within one element on the root page using React.js.  Each of the components behave in different ways according to various independent states.
+### MIDI Hardware Compatible
+  ChordWars implements the WebMidi API to allow for a true music education experience for students.  By allowing keyboard compatibility, ChordWars extends beyond just a game, and actually works to develop rote memorization of chord notes, and positions.  Using a USB midi controller is seamless.  Installation just requires the page is refreshed while the controller is plugged in.  If the device is recognized, the model and manufacturer will appear in the top left corner, and the QWETRY map will automatically be turned off.
+
+
+![hardware](docs/midi-controller.png)
 
 ### Responsive and Beautiful UI.
 
@@ -57,5 +60,6 @@ ChordWars is single page browser game designed for music education.  Upon starti
   And the end of game-play the user is prompted to either play again, or check out the github repository
 ![end-modal](docs/end-modal.png)
 
+
 ### Next Steps
-  The next phase of developing ChordWars is to enable MIDI hardware compatibility, and synthesizer options using the WebAudio and WebMIDI API's.
+  The next phase of developing ChordWars extend beyond a game and introduce a whole interactive music learning center based on Codecademy.  The possibilities of providing an entertaining learning experience for piano and keyboard students are endless given the new MIDI capabilities in browsers.
