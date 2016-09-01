@@ -62,7 +62,6 @@ const App = React.createClass({
   },
 
   setSound(){
-    console.log("SOUNDDD");
     this.setState({ sound: KeyStore.sound() });
     if (KeyStore.sound()){
       MethodModule.addClassToClass("sound-toggle-button", "glow");
@@ -94,6 +93,13 @@ const App = React.createClass({
 
   changePlayed(){
     this.setState({ notes:KeyStore.all() });
+    // for (let i = 0; i < KeyStore.all().length; i++) {
+    //   if (this.state.chord.notes.indexOf(KeyStore.all()[i]) === -1 && this.difficulty === "hard"){
+    //     this.incrementHealth(0.5);
+    //     KeyActions.groupUpdate([]);
+    //     break;
+    //   }
+    // }
   },
 
   componentDidMount(){
@@ -122,22 +128,24 @@ const App = React.createClass({
       } else {
         console.log("WebMidi enabled!");
         let input = WebMidi.inputs[0];
-        that.updateMidiController(input.manufacturer, input.name);
-        input.addListener('noteon', "all",
+        if (input){
+          that.updateMidiController(input.manufacturer, input.name);
+          input.addListener('noteon', "all",
           (e)=>{
             let noteName = (e.note.name+e.note.octave).split("#").join("sharp");
             MethodModule.playKey(noteName);
             MethodModule.colorKey(noteName);
             KeyActions.keyPressed(e.note.name);
-          }
-        );
-        input.addListener('noteoff', "all",
+            }
+          );
+          input.addListener('noteoff', "all",
           (e)=>{
             let noteName = (e.note.name+e.note.octave).split("#").join("sharp");
             MethodModule.revertKey(noteName);
             KeyActions.keyReleased(e.note.name);
-          }
-        );
+            }
+          );
+        }
       }
     });
 
@@ -173,8 +181,6 @@ const App = React.createClass({
   playChord(notes){
     notes.forEach((note)=>{
       let noteFormat = (note+"3").split("#").join("sharp");
-      console.log("THIS NOTE");
-      console.log(noteFormat);
       MethodModule.playKey(noteFormat);
     });
     MethodModule.playKey((notes[0]+"2").split("#").join("sharp"));
@@ -185,6 +191,12 @@ const App = React.createClass({
     MethodModule.addClassToClass("chord", "zoomIn");
     MethodModule.addClassToClass("chord", "animated");
     let nextChord = chordFunctions.generate();
+    while((nextChord.notes.length >= 6) && (this.difficulty !=="hard")){
+      nextChord = chordFunctions.generate();
+    }
+    while((nextChord.notes.length >= 4) && (this.difficulty ==="easy")){
+      nextChord = chordFunctions.generate();
+    }
     setTimeout(()=>{
       MethodModule.removeClassFromClass("chord", "zoomIn");
       MethodModule.removeClassFromClass("chord", "animated");
@@ -196,7 +208,6 @@ const App = React.createClass({
   },
 
   startTimer(level){
-    console.log(this.state.chord);
     let now = new Date();
     let nowSeconds = now.getTime();
     this.timeIntervalId = setInterval(()=>{
@@ -303,7 +314,7 @@ const App = React.createClass({
             <Controls notesCallback={this.toggleNotes} keyMapCallback={this.toggleKeyMap} soundCallback={this.toggleSound} chordNotesCallback={this.toggleChordNotes}/>
           </div>
           <div className = "midi-display animated slideInRight">{ this.state.midiController }</div>
-          <ProgressBar className="timer" width={ this.state.timerPercent } color="#56b6c2"/>
+          <ProgressBar className="timer" onClick={this.nextChord} width={ this.state.timerPercent } color="#56b6c2"/>
           <ProgressBar className="health" width={ this.state.healthPercent } color="red"/>
           <Piano />
         </div>
@@ -316,10 +327,14 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("keydown", (e)=>{
     MethodModule.playKey(KeyMap[e.key]);
     MethodModule.colorKey(KeyMap[e.key]);
-    KeyActions.keyPressed(NoteConstants[KeyMap[e.key]].note);
+    if(NoteConstants[KeyMap[e.key]]){
+      KeyActions.keyPressed(NoteConstants[KeyMap[e.key]].note);
+    }
   });
   document.addEventListener("keyup", (e)=>{
     MethodModule.revertKey(KeyMap[e.key]);
+    if(NoteConstants[KeyMap[e.key]]){
     KeyActions.keyReleased(NoteConstants[KeyMap[e.key]].note);
+    }
   });
 });
